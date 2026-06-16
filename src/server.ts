@@ -1,6 +1,8 @@
-import app from "./app";
-import config from "./config";
-import { initializeDatabase } from "./database/initialize";
+import "reflect-metadata"
+
+import app from "./app.js";
+import config from "./config/index.js";
+import { initializeDatabase } from "./database/initialize.js";
 
 async function bootstrap() {
   try {

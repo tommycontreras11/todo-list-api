@@ -1,6 +1,10 @@
 import { DataSource } from "typeorm";
-import config from "../config"
+import config from "./../config/index.js"
 import path from "path";
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 
 export const AppDataSource = new DataSource({
     type: "mysql",
