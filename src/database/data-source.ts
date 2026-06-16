@@ -1,5 +1,6 @@
 import { DataSource } from "typeorm";
 import config from "../config"
+import path from "path";
 
 export const AppDataSource = new DataSource({
     type: "mysql",
@@ -10,6 +11,12 @@ export const AppDataSource = new DataSource({
     database: config.DB_NAME,
     synchronize: false,
     logging: config.NODE_ENV === "dev",
-    entities: [],
-    migrations: []
+    entities: [
+        path.join(__dirname, "entities/*.entity.{ts,js}")
+    ],
+    migrations: [
+        path.join(__dirname, "migrations/*.{ts,js}")
+    ]
 })
+
+export default AppDataSource
