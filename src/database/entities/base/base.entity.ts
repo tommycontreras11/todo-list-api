@@ -7,12 +7,15 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
-export class BaseEntity {
+export abstract class BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
-  @Generated('uuid')
+  @Column({
+    type: "varchar",
+    length: 36,
+  })
+  @Generated("uuid")
   uuid: string;
 
   @CreateDateColumn()

@@ -10,7 +10,11 @@
     "start": "node dist/server.js",
     "lint": "eslint src",
     "lint:fix": "eslint src --fix",
-    "format": "prettier . --write"
+    "format": "prettier . --write",
+    "typeorm": "tsx ./node_modules/typeorm/cli.js -d ./src/database/data-source.ts",
+    "migration:generate": "npm run typeorm -- migration:generate",
+    "migration:run": "npm run typeorm -- migration:run",
+    "migration:revert": "npm run typeorm -- migration:revert"
   },
   "keywords": [],
   "author": "",

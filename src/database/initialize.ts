@@ -1,4 +1,4 @@
-import { AppDataSource } from "./data-source";
+import AppDataSource from "./data-source.js";
 
 export const initializeDatabase = async (): Promise<void> => {
   try {
