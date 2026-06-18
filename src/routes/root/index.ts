@@ -4,6 +4,7 @@ import { validateDto } from "../../middlewares/dto-validator.middleware.js";
 import { CreateUserDTO } from "../../dto/auth/register.dto.js";
 import { createUserController, loginController } from "../../controllers/auth/index.js";
 import { LoginDTO } from "../../dto/auth/login.dto.js";
+import todoRoutes from "./../todo/index.js"
 
 const router = Router()
 
@@ -13,5 +14,7 @@ router.get("/health", (_req: Request, res: Response) => {
 
 router.post("/register", validateDto(CreateUserDTO), createUserController)
 router.post("/login", validateDto(LoginDTO), loginController)
+
+router.use("/todos", todoRoutes)
 
 export default router
