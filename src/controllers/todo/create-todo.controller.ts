@@ -5,7 +5,13 @@ import { StatusCode } from '../../constants/status-code.js';
 export const createTodoController = async (req: Request, res: Response) => {
   createTodoService(req.body, req.user?.userId!)
     .then((data) => {
-      return res.status(StatusCode.CREATED).json({ data });
+      const todo = {
+        id: data.id,
+        title: data.title,
+        description: data.description,
+      };
+
+      return res.status(StatusCode.CREATED).json({ todo });
     })
     .catch((e) => {
       return res
