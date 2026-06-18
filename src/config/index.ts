@@ -7,7 +7,7 @@ dotenv.config({
 function required(name: string): string {
   const value = process.env[name];
 
-  if (!value) {
+  if (value === undefined) {
     throw new Error(`${name} is missing`);
   }
 

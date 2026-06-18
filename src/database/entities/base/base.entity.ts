@@ -11,13 +11,6 @@ export abstract class BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({
-    type: "varchar",
-    length: 36,
-  })
-  @Generated("uuid")
-  uuid: string;
-
   @CreateDateColumn()
   created_at: Date;
 
