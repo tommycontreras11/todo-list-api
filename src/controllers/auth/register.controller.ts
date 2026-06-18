@@ -11,6 +11,6 @@ export const createUserController = (req: Request, res: Response) => {
     .catch((e) => {
       return res
         .status(e.status ?? StatusCode.INTERNAL_SERVER_ERROR)
-        .json({ error: e.message });
+        .json({ error: { message: e.message } });
     });
 };
