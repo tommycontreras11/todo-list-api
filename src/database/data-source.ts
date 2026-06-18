@@ -1,5 +1,5 @@
 import { DataSource } from "typeorm";
-import config from "./../config/index.js"
+import config from "../config/index.js"
 import path from "path";
 import { fileURLToPath } from "url";
 

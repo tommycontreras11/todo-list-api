@@ -4,14 +4,29 @@ dotenv.config({
     quiet: true
 })
 
-export default {
-    PORT: Number(process.env.PORT),
-    NODE_ENV: `${process.env.NODE_ENV}`,
+function required(name: string): string {
+  const value = process.env[name];
+
+  if (!value) {
+    throw new Error(`${name} is missing`);
+  }
+
+  return value;
+}
+
+const config = {
+    PORT: Number(required("PORT")),
+    NODE_ENV: required("NODE_ENV"),
 
     //Database Configuration
-    DB_HOST: `${process.env.DB_HOST}`,
-    DB_PORT: Number(process.env.DB_PORT),
-    DB_USER: `${process.env.DB_USER}`,
-    DB_PASSWORD: `${process.env.DB_PASSWORD}`,
-    DB_NAME: `${process.env.DB_NAME}`,
+    DB_HOST: required("DB_HOST"),
+    DB_PORT: Number(required("DB_PORT")),
+    DB_USER: required("DB_USER"),
+    DB_PASSWORD: required("DB_PASSWORD"),
+    DB_NAME: required("DB_NAME"),
+
+    //Authentication Configuration
+    JWT_SECRET: required("JWT_SECRET")
 }
+
+export default config
