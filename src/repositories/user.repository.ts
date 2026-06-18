@@ -1,5 +1,5 @@
 import { UserEntity } from '../database/entities/user.entity.js';
-import { CreateUserDTO } from '../dto/user/create-user.dto.js';
+import { CreateUserDTO } from '../dto/auth/register.dto.js';
 import dataSource from './../database/data-source.js';
 
 const repository = dataSource.getRepository(UserEntity)

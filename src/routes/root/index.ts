@@ -1,8 +1,8 @@
 import { Request, Response, Router } from "express";
 import { StatusCode } from "../../constants/status-code.js";
 import { validateDto } from "../../middlewares/dto-validator.middleware.js";
-import { CreateUserDTO } from "../../dto/user/create-user.dto.js";
-import { createUserController } from "../../controllers/user/create-user.controller.js";
+import { CreateUserDTO } from "../../dto/auth/register.dto.js";
+import { createUserController } from "../../controllers/auth/register.controller.js";
 
 const router = Router()
 

@@ -1,11 +1,6 @@
-import { IsEmail, IsNotEmpty, IsString, MaxLength } from 'class-validator';
+import { IsEmail, IsNotEmpty, MaxLength, IsString } from 'class-validator';
 
-export class CreateUserDTO {
-  @IsString()
-  @IsNotEmpty()
-  @MaxLength(100, { message: 'The max of characters is 100' })
-  name: string;
-
+export class LoginDTO {
   @IsEmail()
   @IsNotEmpty()
   @MaxLength(255, { message: 'The max of characters is 255' })

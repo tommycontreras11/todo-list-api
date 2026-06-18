@@ -1,10 +1,10 @@
 import { StatusCode } from '../../constants/status-code.js';
-import { CreateUserDTO } from '../../dto/user/create-user.dto.js';
+import { CreateUserDTO } from '../../dto/auth/register.dto.js';
 import { hashPassword } from '../../utils/password.util.js';
 import { userRepository } from '../../repositories/user.repository.js';
 import { generateAccessToken } from '../../auth/jwt.js';
 
-export const createUserService = async (dto: CreateUserDTO) => {
+export const registerUserService = async (dto: CreateUserDTO) => {
   const existingUser = await userRepository.findByEmail(dto.email);
 
   if (existingUser)
