@@ -3,9 +3,19 @@ import { getAllTodoService } from '../../services/todo/get-all-todos.service.js'
 import { StatusCode } from '../../constants/status-code.js';
 
 export const getAllTodoController = async (req: Request, res: Response) => {
-  getAllTodoService()
+  getAllTodoService({
+    where: {
+      userId: req.user!.userId
+    }
+  })
     .then((data) => {
-      return res.status(StatusCode.OK).json({ data });
+      const todos = data.map((todo) => ({
+        id: todo.id,
+        title: todo.title,
+        description: todo.description
+      }))
+
+      return res.status(StatusCode.OK).json({ data: todos });
     })
     .catch((e) => {
       return res

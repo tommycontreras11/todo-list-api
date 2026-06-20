@@ -5,9 +5,15 @@ import { StatusCode } from '../../constants/status-code.js';
 export const getTodoController = async (req: Request, res: Response) => {
   const { id } = req.params as { id: string }
 
-  getTodoByIdService(+id)
+  getTodoByIdService(+id, req.user!.userId)
     .then((data) => {
-      return res.status(StatusCode.OK).json({ data });
+      const todo = {
+        id: data.id,
+        title: data.title,
+        description: data.description
+      }
+
+      return res.status(StatusCode.OK).json({ data: todo });
     })
     .catch((e) => {
       return res

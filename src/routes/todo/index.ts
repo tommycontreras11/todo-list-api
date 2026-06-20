@@ -9,12 +9,11 @@ import {
 } from '../../controllers/todo/index.js';
 import { CreateOrUpdateTodoDTO } from '../../dto/todo/create-or-update-todo.dto.js';
 import { validateToken } from '../../middlewares/auth.middleware.js';
-import { ownershipTodo } from '../../middlewares/ownership-todo.middleware.js';
 
 const router = Router();
 
 router.get('/', validateToken, getAllTodoController);
-router.get('/:id', validateToken, ownershipTodo, getTodoController);
+router.get('/:id', validateToken, getTodoController);
 router.post(
   '/',
   validateToken,
@@ -24,10 +23,9 @@ router.post(
 router.put(
   '/:id',
   validateToken,
-  ownershipTodo,
   validateDto(CreateOrUpdateTodoDTO),
   updateTodoController,
 );
-router.delete('/:id', validateToken, ownershipTodo, deleteTodoController);
+router.delete('/:id', validateToken, deleteTodoController);
 
 export default router;

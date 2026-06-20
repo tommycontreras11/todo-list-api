@@ -5,9 +5,9 @@ import { StatusCode } from '../../constants/status-code.js';
 export const deleteTodoController = async (req: Request, res: Response) => {
   const { id } = req.params as { id: string }
 
-  deleteTodoService(+id)
-    .then((data) => {
-      return res.status(StatusCode.OK).json({ data });
+  deleteTodoService(+id, req.user!.userId)
+    .then(() => {
+      return res.status(StatusCode.NO_CONTENT).json({});
     })
     .catch((e) => {
       return res
