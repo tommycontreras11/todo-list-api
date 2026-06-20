@@ -14,18 +14,16 @@ export const todoRepository = {
   },
   create(data: CreateOrUpdateTodoDTO, userId: number) {
     const todo = repository.create({
-        ...data,
-        userId
+      ...data,
+      userId,
     });
     return repository.save(todo);
   },
   update(id: number, data: CreateOrUpdateTodoDTO) {
-    return repository.update(id, {
-      title: data.title,
-      description: data.description,
-    });
+    return repository
+      .update(id, data)
   },
   delete(id: number) {
-    return repository.delete(id);
+    return repository.delete({ id });
   },
 };
