@@ -7,7 +7,7 @@ const repository = dataSource.getRepository(TodoEntity);
 
 export const todoRepository = {
   findAll(options?: FindManyOptions<TodoEntity>) {
-    return repository.find(options);
+    return repository.findAndCount(options);
   },
   findById(id: number) {
     return repository.findOne({ where: { id } });
