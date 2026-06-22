@@ -5,6 +5,7 @@ import { CreateUserDTO } from "../../dto/auth/register.dto.js";
 import { createUserController, loginController } from "../../controllers/auth/index.js";
 import { LoginDTO } from "../../dto/auth/login.dto.js";
 import todoRoutes from "./../todo/index.js"
+import { apiRateLimiter, authRateLimiter } from "../../config/rate-limit.js";
 
 const router = Router()
 
@@ -12,9 +13,9 @@ router.get("/health", (_req: Request, res: Response) => {
     res.status(StatusCode.OK).json({ healthy: true })
 })
 
-router.post("/register", validateDto(CreateUserDTO), createUserController)
-router.post("/login", validateDto(LoginDTO), loginController)
+router.post("/register", authRateLimiter, validateDto(CreateUserDTO), createUserController)
+router.post("/login", authRateLimiter, validateDto(LoginDTO), loginController)
 
-router.use("/todos", todoRoutes)
+router.use("/todos", apiRateLimiter, todoRoutes)
 
 export default router
