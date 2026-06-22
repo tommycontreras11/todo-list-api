@@ -31,6 +31,12 @@ export class UserEntity extends BaseEntity {
   })
   password: string;
 
+  @Column({
+    type: 'varchar',
+    nullable: true,
+  })
+  refreshTokenHash: string;
+
   @OneToMany(() => TodoEntity, (todo) => todo.user)
   todos: TodoEntity[];
 }

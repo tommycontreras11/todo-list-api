@@ -4,13 +4,17 @@ import dataSource from './../database/data-source.js';
 
 const repository = dataSource.getRepository(UserEntity)
 
-export const userRepository = {
-  create(data: CreateUserDTO){
+export const userRepository = {  
+  findByEmail(email: string) {
+    return repository.findOneBy({ email })
+  },
+
+  create(data: CreateUserDTO) {
       const user = repository.create(data);
       return repository.save(user)
   },
-  
-  findByEmail(email: string) {
-    return repository.findOneBy({ email })
+
+  update(id: number, refreshToken: string) {
+    return repository.update(id, { refreshTokenHash: refreshToken })
   }
 }
