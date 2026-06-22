@@ -1,9 +1,9 @@
 import { Request, Response } from 'express';
-import { loginService } from '../../services/auth/login.service.js';
 import { StatusCode } from '../../constants/status-code.js';
+import { refreshTokenService } from '../../services/auth/refresh-token.service.js';
 
-export const loginController = async (req: Request, res: Response) => {
-  loginService(req.body)
+export const refreshTokenController = async (req: Request, res: Response) => {
+  refreshTokenService(req.body)
     .then((data) => {
       return res.status(StatusCode.OK).json({ token: data });
     })
