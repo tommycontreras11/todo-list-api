@@ -26,7 +26,8 @@ const config = {
     DB_NAME: required("DB_NAME"),
 
     //Authentication Configuration
-    JWT_SECRET: required("JWT_SECRET")
+    JWT_SECRET: required("JWT_SECRET"),
+    JWT_REFRESH_SECRET: required("JWT_REFRESH_SECRET")    
 }
 
 export default config
