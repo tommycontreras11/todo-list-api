@@ -4,7 +4,6 @@ import { StatusCode } from '../../constants/status-code.js';
 
 export const createUserController = (req: Request, res: Response) => {
   registerUserService(req.body)
-    .then(req.body)
     .then((data) => {
       return res.status(StatusCode.CREATED).json({ token: data });
     })
