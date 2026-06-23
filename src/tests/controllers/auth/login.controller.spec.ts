@@ -5,6 +5,7 @@ import { StatusCode } from '../../../constants/status-code.js';
 import * as userService from '../../../services/auth/login.service.js';
 
 describe('POST /login (controller)', () => {
+  // Success Approach
   it('should login and return tokens', async () => {
     vi.spyOn(userService, 'loginService').mockResolvedValue({
       accessToken: 'fake-access-token',
@@ -24,6 +25,7 @@ describe('POST /login (controller)', () => {
     });
   });
 
+  // Failure Approach
   it('should return 400 if credentials are invalid', async () => {
     vi.spyOn(userService, 'loginService').mockRejectedValue({
       message: 'User y/o password incorrect',
