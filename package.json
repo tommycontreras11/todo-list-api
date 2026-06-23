@@ -12,6 +12,8 @@
     "lint:fix": "eslint src --fix",
     "format": "prettier . --write",
     "typeorm": "tsx ./node_modules/typeorm/cli.js -d ./src/database/data-source.ts",
+    "test": "vitest",
+    "test:run": "vitest run",
     "migration:generate": "npm run typeorm -- migration:generate",
     "migration:run": "npm run typeorm -- migration:run",
     "migration:revert": "npm run typeorm -- migration:revert"
@@ -37,15 +39,19 @@
     "@types/express": "^5.0.6",
     "@types/jsonwebtoken": "^9.0.10",
     "@types/node": "^25.9.3",
+    "@types/supertest": "^7.2.0",
     "@typescript-eslint/eslint-plugin": "^8.61.1",
     "@typescript-eslint/parser": "^8.61.1",
+    "@vitest/coverage-v8": "^4.1.9",
     "eslint": "^10.5.0",
     "eslint-config-prettier": "^10.1.8",
     "globals": "^17.6.0",
     "prettier": "^3.8.4",
+    "supertest": "^7.2.2",
     "tsconfig-paths": "^4.2.0",
     "tsx": "^4.22.4",
     "typescript": "5.9",
-    "typescript-eslint": "^8.61.1"
+    "typescript-eslint": "^8.61.1",
+    "vitest": "^4.1.9"
   }
 }
