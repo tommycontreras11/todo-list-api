@@ -1,10 +1,14 @@
-import { describe, it, expect, vi } from 'vitest';
+import { describe, it, expect, vi, afterEach } from 'vitest';
 import request from 'supertest';
 import * as userService from '../../../services/auth/register.service.js';
 import app from '../../../app.js';
 import { StatusCode } from '../../../constants/status-code.js';
 
 describe('POST /register (controller)', () => {
+  afterEach(() => {
+    vi.resetAllMocks();
+  });
+
   // Success Approach
   it('should create a user and return a token', async () => {
     vi.spyOn(userService, 'registerUserService').mockResolvedValue(

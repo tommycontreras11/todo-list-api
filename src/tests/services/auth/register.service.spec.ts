@@ -1,4 +1,4 @@
-import { describe, it, expect, vi } from 'vitest';
+import { describe, it, expect, vi, afterEach } from 'vitest';
 import { userRepository } from '../../../repositories/user.repository.js';
 import { registerUserService } from '../../../services/auth/register.service.js';
 import { StatusCode } from '../../../constants/status-code.js';
@@ -7,6 +7,10 @@ import * as jwt from "./../../../auth/jwt.js"
 import { UserEntity } from '../../../database/entities/user.entity.js';
 
 describe('registerUserService', () => {
+  afterEach(() => {
+    vi.resetAllMocks();
+  });
+
   // Success Approach
   it("should create a user and return a token", async () => {
     vi.spyOn(userRepository, "findByEmail")

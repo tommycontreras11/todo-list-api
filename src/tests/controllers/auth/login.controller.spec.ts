@@ -1,10 +1,14 @@
-import { describe, it, expect, vi } from 'vitest';
+import { describe, it, expect, vi, afterEach } from 'vitest';
 import request from 'supertest';
 import app from '../../../app.js';
 import { StatusCode } from '../../../constants/status-code.js';
 import * as userService from '../../../services/auth/login.service.js';
 
 describe('POST /login (controller)', () => {
+  afterEach(() => {
+    vi.resetAllMocks();
+  });
+  
   // Success Approach
   it('should login and return tokens', async () => {
     vi.spyOn(userService, 'loginService').mockResolvedValue({
