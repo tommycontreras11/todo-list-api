@@ -8,7 +8,7 @@ describe('POST /login (controller)', () => {
   afterEach(() => {
     vi.resetAllMocks();
   });
-  
+
   // Success Approach
   it('should login and return tokens', async () => {
     vi.spyOn(userService, 'loginService').mockResolvedValue({
@@ -16,14 +16,14 @@ describe('POST /login (controller)', () => {
       refreshToken: 'fake-refresh-token',
     });
 
-    const res = await request(app).post('/login').send({
+    const response = await request(app).post('/login').send({
       email: 'john@gmail.com',
       password: 'admin123',
     });
 
-    expect(res.status).toBe(StatusCode.OK);
+    expect(response.status).toBe(StatusCode.OK);
 
-    expect(res.body.data).toEqual({
+    expect(response.body.data).toEqual({
       accessToken: 'fake-access-token',
       refreshToken: 'fake-refresh-token',
     });
@@ -36,14 +36,14 @@ describe('POST /login (controller)', () => {
       status: StatusCode.BAD_REQUEST,
     });
 
-    const res = await request(app).post('/login').send({
+    const response = await request(app).post('/login').send({
       email: 'wrong@gmail.com',
       password: 'wrongpass',
     });
 
-    expect(res.status).toBe(StatusCode.BAD_REQUEST);
+    expect(response.status).toBe(StatusCode.BAD_REQUEST);
 
-    expect(res.body).toEqual({
+    expect(response.body).toEqual({
       error: {
         message: 'User y/o password incorrect',
       },
@@ -66,13 +66,13 @@ describe('POST /login (controller)', () => {
       ],
     });
 
-    const res = await request(app).post('/login').send({
+    const response = await request(app).post('/login').send({
       password: 'admin123',
     });
 
-    expect(res.status).toBe(StatusCode.BAD_REQUEST);
+    expect(response.status).toBe(StatusCode.BAD_REQUEST);
 
-    expect(res.body).toEqual({
+    expect(response.body).toEqual({
       message: 'Validation failed',
       errors: [
         {
@@ -98,14 +98,14 @@ describe('POST /login (controller)', () => {
       ],
     });
 
-    const res = await request(app).post('/login').send({
+    const response = await request(app).post('/login').send({
       email: '',
       password: 'admin123',
     });
 
-    expect(res.status).toBe(StatusCode.BAD_REQUEST);
+    expect(response.status).toBe(StatusCode.BAD_REQUEST);
 
-    expect(res.body).toEqual({
+    expect(response.body).toEqual({
       message: 'Validation failed',
       errors: [
         {
@@ -127,14 +127,14 @@ describe('POST /login (controller)', () => {
       ],
     });
 
-    const res = await request(app).post('/login').send({
+    const response = await request(app).post('/login').send({
       email: 'email',
       password: 'admin123',
     });
 
-    expect(res.status).toBe(StatusCode.BAD_REQUEST);
+    expect(response.status).toBe(StatusCode.BAD_REQUEST);
 
-    expect(res.body).toEqual({
+    expect(response.body).toEqual({
       message: 'Validation failed',
       errors: [
         {
@@ -161,13 +161,13 @@ describe('POST /login (controller)', () => {
       ],
     });
 
-    const res = await request(app).post('/login').send({
+    const response = await request(app).post('/login').send({
       email: 'john@gmail.com',
     });
 
-    expect(res.status).toBe(StatusCode.BAD_REQUEST);
+    expect(response.status).toBe(StatusCode.BAD_REQUEST);
 
-    expect(res.body).toEqual({
+    expect(response.body).toEqual({
       message: 'Validation failed',
       errors: [
         {
@@ -193,14 +193,14 @@ describe('POST /login (controller)', () => {
       ],
     });
 
-    const res = await request(app).post('/login').send({
+    const response = await request(app).post('/login').send({
       email: 'john@gmail.com',
       password: '',
     });
 
-    expect(res.status).toBe(StatusCode.BAD_REQUEST);
+    expect(response.status).toBe(StatusCode.BAD_REQUEST);
 
-    expect(res.body).toEqual({
+    expect(response.body).toEqual({
       message: 'Validation failed',
       errors: [
         {
