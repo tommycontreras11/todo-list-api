@@ -8,10 +8,10 @@ export const createTodoController = async (req: Request, res: Response) => {
       const todo = {
         id: data.id,
         title: data.title,
-        description: data.description,
+        description: data.description
       };
 
-      return res.status(StatusCode.CREATED).json({ todo });
+      return res.status(StatusCode.CREATED).json({ data: todo });
     })
     .catch((e) => {
       return res
