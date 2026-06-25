@@ -9,7 +9,7 @@ import { StatusCode } from '../../../constants/status-code.js';
 
 describe('refreshTokenService', () => {
   afterEach(() => {
-    vi.resetAllMocks();
+    vi.restoreAllMocks();
   });
 
   const user = {

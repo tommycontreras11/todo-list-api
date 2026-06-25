@@ -6,7 +6,7 @@ import * as userService from '../../../services/auth/login.service.js';
 
 describe('POST /login (controller)', () => {
   afterEach(() => {
-    vi.resetAllMocks();
+    vi.restoreAllMocks();
   });
 
   // Success Approach

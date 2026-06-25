@@ -9,7 +9,7 @@ import { StatusCode } from '../../../constants/status-code.js';
 
 describe('loginService', () => {
   afterEach(() => {
-    vi.resetAllMocks();
+    vi.restoreAllMocks();
   });
   
   const user = {

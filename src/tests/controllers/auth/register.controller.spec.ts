@@ -6,7 +6,7 @@ import { StatusCode } from '../../../constants/status-code.js';
 
 describe('POST /register (controller)', () => {
   afterEach(() => {
-    vi.resetAllMocks();
+    vi.restoreAllMocks();
   });
 
   // Success Approach

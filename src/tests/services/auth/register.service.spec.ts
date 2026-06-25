@@ -8,7 +8,7 @@ import { UserEntity } from '../../../database/entities/user.entity.js';
 
 describe('registerUserService', () => {
   afterEach(() => {
-    vi.resetAllMocks();
+    vi.restoreAllMocks();
   });
 
   // Success Approach

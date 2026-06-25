@@ -10,7 +10,7 @@ import {
 
 describe('POST /refresh-token (controller)', () => {
   afterEach(() => {
-    vi.resetAllMocks();
+    vi.restoreAllMocks();
   });
 
   it('should regenerate a token', async () => {
