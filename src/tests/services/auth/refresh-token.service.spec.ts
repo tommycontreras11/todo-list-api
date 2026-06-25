@@ -9,7 +9,7 @@ import { StatusCode } from '../../../constants/status-code.js';
 
 describe('refreshTokenService', () => {
   afterEach(() => {
-    vi.clearAllMocks();
+    vi.resetAllMocks();
   });
 
   const user = {
@@ -65,9 +65,11 @@ describe('refreshTokenService', () => {
 
     vi.spyOn(userRepository, 'findByEmail').mockResolvedValue({ ...user } as UserEntity);
 
+    const token = jwt.generateRefreshToken({ email: "john@gmail.com", userId: 1 })
+
     await expect(
       refreshTokenService({
-        refreshToken: 'refresh-token',
+        refreshToken: token,
       }),
     ).rejects.toEqual({
       message: 'Invalid refresh token',
